@@ -6,6 +6,9 @@ var imagemin=require('gulp-imagemin');
 var autoprefixer=require('gulp-autoprefixer');
 var clean= require('gulp-clean');
 var uglify = require('gulp-uglify');
+var rev =require('gulp-rev');
+var revReplace = require('gulp-rev-replace');
+var useref = require('gulp-useref');
 
 
 gulp.task("build:img",function(){
@@ -49,4 +52,24 @@ gulp.task('build:js',function(){
              .pipe(concat('merge.js'))
              .pipe(gulp.dest('./dist/js'))
 })
+
+gulp.task('revision',['build:css','build:js'],function(){
+    return gulp.src(['./dist/css/*.css','./dist/js/*.js'])
+        .pipe(rev())
+        .pipe(gulp.dest('./dist'))
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('./dist'))
+})
+
+gulp.task('index',['revision'],function(){
+    var manifest = gulp.src('./dist/rev-manifest.json');
+
+    return gulp.src('./src/index.html')
+        .pipe(revReplace({
+            manifest:manifest
+        }))
+        .pipe(useref())
+        .pipe(gulp.dest('./dist'));
+})
+
 gulp.task('default',['build:css','build:js','build:img'])
