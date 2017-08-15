@@ -1,0 +1,25 @@
+{
+  "name": "gulp-autoweb",
+  "version": "1.0.0",
+  "description": "使用gulp实现工程自动化",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangyhmax/gulp-autoweb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huangyhmax/gulp-autoweb/issues"
+  },
+  "homepage": "https://github.com/huangyhmax/gulp-autoweb#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2"
+  }
+}
