@@ -20,18 +20,18 @@ $(function(){
         this.$imgCt.css({left:-imgWidth});
         this.$imgCt.append(this.list.first().clone());
         this.$imgCt.prepend(this.list.last().clone());
-        console.log(listCount);
-        console.log(imgWidth);
+        // console.log(listCount);
+        // console.log(imgWidth);
         this.$imgCt.width(((listCount)+2)*imgWidth);
-        console.log(this.$imgCt)
-        console.log(this.$imgCt.width())
-        console.log("init部分结束")
+        // console.log(this.$imgCt)
+        // console.log(this.$imgCt.width())
+        // console.log("init部分结束")
     }
 
     Carousel.prototype.bind=function(){
         var _this=this
-        console.log(this.$preBtn)
-        console.log('测试'+this.pageIndex)
+        // console.log(this.$preBtn)
+        // console.log('测试'+this.pageIndex)
         
         this.$preBtn.on('click',function(){
             _this.playPre(1)
@@ -42,7 +42,7 @@ $(function(){
         this.$tipsBtn.on('click',function(){
             var _thistb=this
             var index=$(_thistb).index();
-            console.log(index);
+            // console.log(index);
             // console.log(_this.pageIndex);
             if(index>_this.pageIndex){
                 _this.playNext(index-_this.pageIndex);
@@ -53,22 +53,22 @@ $(function(){
     }
     Carousel.prototype.playPre=function(len){
         this.len=len;
-        console.log(len);
-        console.log(this.len);
+        // console.log(len);
+        // console.log(this.len);
         var _this=this;
-        console.log('外面pageindex是:'+this.pageIndex)
+        // console.log('外面pageindex是:'+this.pageIndex)
         if(_this.isAminate) return;
         _this.isAminate=true;
-        console.log(this.len*this.imgWidth)
+        // console.log(this.len*this.imgWidth)
         this.$imgCt.animate({left:'+='+this.len*this.imgWidth},function(){
             _this.pageIndex -=_this.len;
-            console.log('pageindex是:'+_this.pageIndex)
+            // console.log('pageindex是:'+_this.pageIndex)
             // pageIndex--;
             if(_this.pageIndex<0){
                 _this.pageIndex=_this.listCount-1;
                 _this.$imgCt.css({left:-_this.imgWidth*_this.listCount});
             }
-            console.log(_this.pageIndex);  
+            // console.log(_this.pageIndex);  
             _this.tipsShow() 
             _this.isAminate=false;
         })
@@ -86,7 +86,7 @@ $(function(){
                 _this.pageIndex=0;
                 _this.$imgCt.css({left:-_this.imgWidth});
             }
-            console.log(_this.pageIndex);
+            // console.log(_this.pageIndex);
             _this.tipsShow()
             _this.isAminate=false;
         })  
